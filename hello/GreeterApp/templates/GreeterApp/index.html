@@ -1,0 +1,55 @@
+<html lang="utf-8">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Hello, world!</title>
+    <style>
+      body{
+        padding: 20px;
+        background: #FFFFF0;
+
+      }
+      h2{
+        display:none;
+        color: #008B8B;
+      }
+      span{
+        padding: 50px;
+        color: blue;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <br><br>
+    <form class="row g-3" method='post'>
+       {% csrf_token %}
+      <div class="col-auto">
+        {{form.name}}
+      </div>
+      <div class="col-auto">
+        <button type="submit"   class = "btn btn-primary mb-3">Hello</button>
+        <span>{{n}} <span>
+      </div>
+    </form>
+    
+    <button type="button" class="btn btn-success" onclick="hello()">show names</button>
+    {% for i in users %}
+    <h2 class='name'>{{i.name}}</h2>
+    {% endfor %} 
+  </body>
+  <footer>
+  <script>
+    function hello(){
+      var h2 = document.querySelectorAll('h2').length
+
+      for (let i=0; i<h2; i++){
+
+        var names= document.getElementsByTagName('h2')[i];
+        names.setAttribute('style', "display:block");}
+    }
+  </script>
+</footer>
+</html>
